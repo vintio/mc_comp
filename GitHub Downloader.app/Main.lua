@@ -20,7 +20,7 @@ local workspace, window = system.addWindow(GUI.filledWindow(1, 1, 39, 23, 0x6624
 
 local progress = window:addChild(GUI.progressIndicator(window.width - 5, 2, 0x1E1E1E, 0x1E1E1E, 0xA5A5A5))
 
-local user = window:addChild(GUI.input(5, 5, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "vintio", localization.nick, false))
+local user = window:addChild(GUI.input(5, 5, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "vintio1", localization.nick, false))
 local repo = window:addChild(GUI.input(5, 9, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "mc_comp", localization.repository, false))
 local path = window:addChild(GUI.input(5, 9, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "/projects/", localization.choosePath, false))
 --local path = window:addChild(GUI.filesystemChooser(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0x1E1E1E, 0xA5A5A5, localization.choosePath, localization.choose, localization.cancel, localization.choosePath, "/"))
