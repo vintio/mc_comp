@@ -116,10 +116,6 @@ downloadButton.onTouch = function()
         GUI.alert(localization.noRepository)
         return
     end
-	if string.sub(path.path, 1, 1) ~= "/" then
-        GUI.alert(localization.noPath)
-        return
-    end
     downloader("https://api.github.com/repos/" .. user.text .. "/" .. repo.text .. "/contents/") 
     filesystem.makeDirectory(path.path .. repo.text)
     workspace:draw()
