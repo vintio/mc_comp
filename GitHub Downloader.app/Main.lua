@@ -23,7 +23,7 @@ local progress = window:addChild(GUI.progressIndicator(window.width - 5, 2, 0x1E
 
 local user = window:addChild(GUI.input(5, 5, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "vintio2", localization.nick, false))
 local repo = window:addChild(GUI.input(5, 9, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "mc_comp", localization.repository, false))
-local path = window:addChild(GUI.input(5, 9, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "/projects/", localization.choosePath, false))
+local path = window:addChild(GUI.input(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "/projects/", localization.choosePath, false))
 --local path = window:addChild(GUI.filesystemChooser(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0x1E1E1E, 0xA5A5A5, localization.choosePath, localization.choose, localization.cancel, localization.choosePath, "/"))
 --path:setMode(GUI.IO_MODE_DIRECTORY)
 local downloadButton = window:addChild(GUI.button(5, 17, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, localization.download))
