@@ -2,7 +2,7 @@
 -- Import libraries
 local GUI = require("GUI")
 local system = require("System")
-
+local component = require("component")
 ---------------------------------------------------------------------------------
 
 -- Add a new window to MineOS workspace
@@ -10,7 +10,7 @@ local workspace, window, menu = system.addWindow(GUI.filledWindow(1, 1, 60, 20, 
 
 -- Add single cell layout to window
 local layout = window:addChild(GUI.layout(1, 1, window.width, window.height, 1, 1))
-
+component.list
 -- Add nice gray text object to layout
 layout:addChild(GUI.text(1, 1, 0x4B4B4B, "Привет ёпта"))
 
