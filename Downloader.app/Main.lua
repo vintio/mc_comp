@@ -88,8 +88,7 @@ end
 local function downloader(url, file)
   local data = ReadUrl(url)
   if data then
-      filesystem.write(file, ReadUrl(url))
-    end
+    filesystem.write(file, ReadUrl(url))
     computer.pushSignal("system", "updateFileList")
   end
 end
