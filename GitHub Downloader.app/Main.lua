@@ -1,4 +1,3 @@
---v 0.1.2
 local system = require("System")
 local filesystem = require("Filesystem")
 local GUI = require("GUI")
@@ -23,12 +22,12 @@ local progress = window:addChild(GUI.progressIndicator(window.width - 5, 2, 0x1E
 
 local user = window:addChild(GUI.input(5, 5, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "vintio", localization.nick, false))
 local repo = window:addChild(GUI.input(5, 9, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "mc_comp", localization.repository, false))
-local path = window:addChild(GUI.input(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "/projects/", localization.choosePath, false))
---local path = window:addChild(GUI.filesystemChooser(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0x1E1E1E, 0xA5A5A5, localization.choosePath, localization.choose, localization.cancel, localization.choosePath, "/"))
---path:setMode(GUI.IO_MODE_DIRECTORY)
+--local path = window:addChild(GUI.input(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "/projects/", localization.choosePath, false))
+local path = window:addChild(GUI.filesystemChooser(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0x1E1E1E, 0xA5A5A5, localization.choosePath, localization.choose, localization.cancel, localization.choosePath, "/"))
+path:setMode(GUI.IO_MODE_DIRECTORY)
 local downloadButton = window:addChild(GUI.button(5, 17, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, localization.download))
 
-local version = window:addChild(GUI.text(1, window.height, 0xA5A5A5, "GitHub Dowloader V-1.1"))
+local version = window:addChild(GUI.text(1, window.height, 0xA5A5A5, "GitHub Dowloader 0.1.0"))
 
 local function request(url, body, headers, timeout)
   local newUrl = url:gsub("%s", "%%20")
