@@ -27,7 +27,7 @@ local path = window:addChild(GUI.filesystemChooser(5, 13, 30, 3, 0x1E1E1E, 0xA5A
 path:setMode(GUI.IO_MODE_DIRECTORY)
 local downloadButton = window:addChild(GUI.button(5, 17, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, localization.download))
 
-local version = window:addChild(GUI.text(1, window.height, 0xA5A5A5, "GitHub Dowloader 0.1.0"))
+local version = window:addChild(GUI.text(1, window.height, 0xA5A5A5, "GitHub Dowloader 0.1.1"))
 
 local function request(url, body, headers, timeout)
   local newUrl = url:gsub("%s", "%%20")
@@ -108,19 +108,16 @@ local function downloader(url)
 end
 
 downloadButton.onTouch = function()
-    if user.text == "" then
-        GUI.alert(localization.noNick)
-        return
-    end
-    if repo.text == "" then
-        GUI.alert(localization.noRepository)
-        return
-    end
-    downloader("https://api.github.com/repos/" .. user.text .. "/" .. repo.text .. "/contents/") 
-    filesystem.makeDirectory(path.path .. repo.text)
-    workspace:draw()
-end
-
-version.onTouch = function()
   GUI.alert(path.path)
+    -- if user.text == "" then
+    --     GUI.alert(localization.noNick)
+    --     return
+    -- end
+    -- if repo.text == "" then
+    --     GUI.alert(localization.noRepository)
+    --     return
+    -- end
+    -- downloader("https://api.github.com/repos/" .. user.text .. "/" .. repo.text .. "/contents/") 
+    -- filesystem.makeDirectory(path.path .. repo.text)
+    -- workspace:draw()
 end
