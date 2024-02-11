@@ -27,7 +27,7 @@ local path = window:addChild(GUI.input(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A
 --path:setMode(GUI.IO_MODE_DIRECTORY)
 local downloadButton = window:addChild(GUI.button(5, 17, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, localization.download))
 
-window:addChild(GUI.text(1, window.height, 0xA5A5A5, "GitHub Dowloader 0.1.4"))
+window:addChild(GUI.text(1, window.height, 0xA5A5A5, "GitHub Dowloader 0.1.5"))
 
 local function request(url, body, headers, timeout)
   local newUrl = url:gsub("%s", "%%20")
@@ -95,10 +95,10 @@ local function downloader(url)
     local content = json.decode(data)
     for i, content in ipairs(content) do
       if content.type == "file" then
-        filesystem.write(path.text .. repo.text .. "/" .. content.path, ReadUrl(content.download_url))
+        filesystem.write(path.text .. content.path, ReadUrl(content.download_url))
       end
       if content.type == "dir" then
-        filesystem.makeDirectory(path.text .. repo.text .. "/" .. content.path)
+        filesystem.makeDirectory(path.text .. content.path)
         downloader(url .. content.name .. "/")
       end
     end
@@ -120,6 +120,5 @@ downloadButton.onTouch = function()
         return
     end
     downloader("https://api.github.com/repos/" .. user.text .. "/" .. repo.text .. "/contents/") 
-    filesystem.makeDirectory(path.text .. repo.text)
     workspace:draw()
 end
