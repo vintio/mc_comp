@@ -13,7 +13,8 @@ local layout = window:addChild(GUI.layout(1, 1, window.width, window.height, 1, 
 
 --component.getItemsInNetwork([filter:table]):table
 -- Add nice gray text object to layout
-local screenText = layout:addChild(GUI.text(1, 1, 0x4B4B4B, adapters))
+local screenText = layout:addChild(GUI.text(1, 1, 0x4B4B4B, "123"))
+local screenText2 = layout:addChild(GUI.text(1, 1, 0x4B4B4B, "asd"))
 
 -- Customize MineOS menu for this application by your will
 local contextMenu = menu:addContextMenuItem("File")
