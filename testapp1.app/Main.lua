@@ -3,8 +3,9 @@
 local GUI = require("GUI")
 local system = require("System")
 local devices = require("Component")
+local component = require("component")
 ---------------------------------------------------------------------------------
-local adapters = devices.get("adapter")
+local adapters = component.list()
 -- Add a new window to MineOS workspace
 local workspace, window, menu = system.addWindow(GUI.filledWindow(1, 1, 60, 20, 0xE1E1E1))
 
@@ -13,8 +14,11 @@ local layout = window:addChild(GUI.layout(1, 1, window.width, window.height, 1, 
 
 --component.getItemsInNetwork([filter:table]):table
 -- Add nice gray text object to layout
-local screenText = layout:addChild(GUI.text(1, 1, 0x4B4B4B, "123"))
-local screenText2 = layout:addChild(GUI.text(1, 1, 0x4B4B4B, "asd"))
+for i = 0, #adapters do
+  layout:addChild(GUI.text(1, 1, 0x4B4B4B, adapters[i]))
+end
+--local screenText = layout:addChild(GUI.text(1, 1, 0x4B4B4B, "123"))
+--local screenText2 = layout:addChild(GUI.text(1, 1, 0x4B4B4B, "asd"))
 
 -- Customize MineOS menu for this application by your will
 local contextMenu = menu:addContextMenuItem("File")
