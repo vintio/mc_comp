@@ -10,10 +10,10 @@ local workspace, window, menu = system.addWindow(GUI.filledWindow(1, 1, 60, 20, 
 
 -- Add single cell layout to window
 local layout = window:addChild(GUI.layout(1, 1, window.width, window.height, 1, 1))
-component.list
+
+--component.getItemsInNetwork([filter:table]):table
 -- Add nice gray text object to layout
-local screenText = GUI.text(1, 1, 0x4B4B4B, "Привет ёпта")
-layout:addChild(screenText)
+local screenText = layout:addChild(GUI.text(1, 1, 0x4B4B4B, component.list))
 
 -- Customize MineOS menu for this application by your will
 local contextMenu = menu:addContextMenuItem("File")
