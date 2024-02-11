@@ -20,14 +20,14 @@ local workspace, window = system.addWindow(GUI.filledWindow(1, 1, 39, 23, 0x6624
 
 local progress = window:addChild(GUI.progressIndicator(window.width - 5, 2, 0x1E1E1E, 0x1E1E1E, 0xA5A5A5))
 
-local user = window:addChild(GUI.input(5, 5, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "", localization.nick, false))
-local repo = window:addChild(GUI.input(5, 9, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "", localization.repository, false))
+local user = window:addChild(GUI.input(5, 5, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "vintio", localization.nick, false))
+local repo = window:addChild(GUI.input(5, 9, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "ma_comp", localization.repository, false))
 --local path = window:addChild(GUI.filesystemChooser(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0x1E1E1E, 0xA5A5A5, localization.choosePath, localization.choose, localization.cancel, localization.choosePath, "/"))
 local path = window:addChild(GUI.input(5, 13, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, 0xFFFFFF, "/Projects/", localization.choosePath, false))
 --path:setMode(GUI.IO_MODE_DIRECTORY)
 local downloadButton = window:addChild(GUI.button(5, 17, 30, 3, 0x1E1E1E, 0xA5A5A5, 0xA5A5A5, 0x1E1E1E, localization.download))
 
-window:addChild(GUI.text(1, window.height, 0xA5A5A5, "GitHub Dowloader 0.1.2"))
+window:addChild(GUI.text(1, window.height, 0xA5A5A5, "GitHub Dowloader 0.1.3"))
 
 local function request(url, body, headers, timeout)
   local newUrl = url:gsub("%s", "%%20")
@@ -95,10 +95,10 @@ local function downloader(url)
     local content = json.decode(data)
     for i, content in ipairs(content) do
       if content.type == "file" then
-        filesystem.write(path.path .. repo.text .. "/" .. content.path, ReadUrl(content.download_url))
+        filesystem.write(path.text .. repo.text .. "/" .. content.path, ReadUrl(content.download_url))
       end
       if content.type == "dir" then
-        filesystem.makeDirectory(path.path .. repo.text .. "/" .. content.path)
+        filesystem.makeDirectory(path.text .. repo.text .. "/" .. content.path)
         downloader(url .. content.name .. "/")
       end
     end
@@ -115,11 +115,11 @@ downloadButton.onTouch = function()
         GUI.alert(localization.noRepository)
         return
     end
-	if string.sub(path.path, 1, 1) ~= "/" then
+	if string.sub(path.text, 1, 1) ~= "/" then
         GUI.alert(localization.noPath)
         return
     end
     downloader("https://api.github.com/repos/" .. user.text .. "/" .. repo.text .. "/contents/") 
-    filesystem.makeDirectory(path.path .. repo.text)
+    filesystem.makeDirectory(path.text .. repo.text)
     workspace:draw()
 end
