@@ -2,9 +2,9 @@
 -- Import libraries
 local GUI = require("GUI")
 local system = require("System")
-local component = require("component")
+local devices = require("Component")
 ---------------------------------------------------------------------------------
-
+local adapters = devices.get("adapter")
 -- Add a new window to MineOS workspace
 local workspace, window, menu = system.addWindow(GUI.filledWindow(1, 1, 60, 20, 0xE1E1E1))
 
@@ -13,7 +13,7 @@ local layout = window:addChild(GUI.layout(1, 1, window.width, window.height, 1, 
 
 --component.getItemsInNetwork([filter:table]):table
 -- Add nice gray text object to layout
-local screenText = layout:addChild(GUI.text(1, 1, 0x4B4B4B, component.list))
+local screenText = layout:addChild(GUI.text(1, 1, 0x4B4B4B, adapters))
 
 -- Customize MineOS menu for this application by your will
 local contextMenu = menu:addContextMenuItem("File")
